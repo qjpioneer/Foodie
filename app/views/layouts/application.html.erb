@@ -9,6 +9,18 @@
   </head>
 
   <body>
+  	<% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class: "alert alert-info") %>
+	<% end %>
+
+	<% if user_signed_in?%>
+		Welcome ,歡迎使用者 <%=current_user.email %> 登入<br>
+		
+	<% end %>
+
+	<%= link_to 'login', user_session_path %>
+	<%= link_to 'log out', destroy_user_session_path, :method => :delete %>
+
     <%= yield %>
   </body>
 </html>

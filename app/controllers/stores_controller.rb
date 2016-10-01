@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user! ,except: [:index, :show]
   # GET /stores
   # GET /stores.json
   def index
@@ -14,7 +14,8 @@ class StoresController < ApplicationController
 
   # GET /stores/new
   def new
-    @store = Store.new
+    #@store = Store.new  改成目前登入使用者下的store
+    @store = current_user.stores.build
   end
 
   # GET /stores/1/edit
@@ -24,7 +25,8 @@ class StoresController < ApplicationController
   # POST /stores
   # POST /stores.json
   def create
-    @store = Store.new(store_params)
+    #@store = Store.new(store_params)
+    @store = current_user.stores.build(store_params)
 
     respond_to do |format|
       if @store.save
