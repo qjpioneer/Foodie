@@ -17,10 +17,14 @@
 		Welcome ,歡迎使用者 <%=current_user.email %> 登入<br>
 		
 	<% end %>
-<%= link_to 'admin', rails_admin_path %>
-	<%= link_to 'login', user_session_path %>
-	<%= link_to 'log out', destroy_user_session_path, :method => :delete %>
+  
 
-    <%= yield %>
+
+  <div class="container-fluid">
+   <%= render "common/navbar" %>
+   <%= yield %>
+  </div>
+  <%= render "common/footer" %>
+
   </body>
 </html>
