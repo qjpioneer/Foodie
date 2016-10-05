@@ -13,22 +13,19 @@
   </head>
 
   <body>
-  	<% flash.each do |name, msg| %>
-			<%= content_tag(:div, msg, class: "alert alert-info") %>
-	<% end %>
 
-	<% if user_signed_in?%>
-		Welcome ,歡迎使用者 <%=current_user.email %> 登入<br>
-		
-	<% end %>
-  
+  <div class="container">
 
-
-  <div class="container-fluid">
-   <%= render "common/navbar" %>
-   <%= yield %>
+    <% flash.each do |name, msg| %>
+  			<%= content_tag(:div, msg, class: "alert alert-info") %>
+  	<% end %>
+    <%= render "common/navbar" %>
+    <div class="container-fluid">
+    
+     <%= yield %>
+    </div>
+    <%= render "common/footer" %>
   </div>
-  <%= render "common/footer" %>
 
   </body>
 </html>

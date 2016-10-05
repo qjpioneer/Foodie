@@ -1,38 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag @store.img.url(:medium) %>
 
-<p>
-  <strong>特色圖片:</strong></br>
-  <%=image_tag @store.img.url(:medium) %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @store.name %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @store.phone %>
-</p>
-
-<p>
-  <strong>Rate:</strong>
-  <%= @store.rate %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @store.address %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @store.category %>
-</p>
-
-
-
-
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><strong>店名:</strong></td>
+                <td><%= @store.name %></td>
+              </tr>
+              <tr>
+                <td><strong>聯絡方式:</strong></td>
+                <td><%= @store.phone %></td>
+              </tr>
+              <tr>
+                <td><strong>地址:</strong></td>
+                <td><%= @store.address %></td>
+              </tr>
+              <tr>
+                <td><strong>餐點類別:</strong></td>
+                <td><%= @store.category %></td>
+              </tr>
+              <tr>
+                <td><strong>Rating:</strong></td>
+                <td><%= @store.rate %></td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+      <div class="col-md-7 col-md-offset-1">
+        <h1 class="review_title"><%= @store.name %></h1>
+        <% if @reviews.blank? %>
+          <h3>No reviews just yet, would you like to add the first!</h3>
+ <% else %>
+          <% @reviews.each do |review| %>
+            <div class="reviews">
+              <div class="star-rating" data-score= <%= review.rating %> ></div>
+              <p><%= review.comment %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>
