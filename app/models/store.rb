@@ -1,5 +1,6 @@
 class Store < ApplicationRecord
 	belongs_to :user
+	has_many :reviews
 
 	#paperclip
 	has_attached_file :img, styles: { medium: "400x600#"}, default_url: "/images/missing.jpg"
