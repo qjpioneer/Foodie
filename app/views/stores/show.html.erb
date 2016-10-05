@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>特色圖片:</strong></br>
+  <%=image_tag @store.img.url(:medium) %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @store.name %>
 </p>
@@ -24,6 +29,10 @@
   <strong>Category:</strong>
   <%= @store.category %>
 </p>
+
+
+
+
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %>
