@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008204016) do
+ActiveRecord::Schema.define(version: 20161008221255) do
 
   create_table "reviews", force: :cascade do |t|
     t.float    "rating"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20161008204016) do
     t.string   "img_content_type"
     t.integer  "img_file_size"
     t.datetime "img_updated_at"
+    t.float    "avg_rating"
   end
 
   create_table "users", force: :cascade do |t|

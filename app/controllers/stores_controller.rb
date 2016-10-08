@@ -11,7 +11,6 @@ class StoresController < ApplicationController
   # GET /stores/1.json
   def show
     @reviews = Review.where(store_id: @store.id).order("created_at DESC")
-    @a = @reviews.map { |e|  e.rating  } 
 
     if @reviews.blank?
       @avg_review = 0
@@ -19,6 +18,8 @@ class StoresController < ApplicationController
       @avg_review = @reviews.average(:rating).round(2)
     end
 
+    @store.avg_rating = @avg_review
+    @store.save
   end
 
   # GET /stores/new

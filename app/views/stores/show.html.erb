@@ -5,18 +5,16 @@
         <div class="img">
           <%= image_tag @store.img.url(:medium) %>
         </div>
+        <div class="avg_rate text-center">
+            <div class="star-rating " data-score= <%= @avg_review %> ></div>
+            <em><%= "#{@reviews.length} reviews" %></em>
+        </div>
 
 
 
         <div class="table-responsive">
           <table class="table">
             <tbody>
-              <tr>
-                <td>       
-                 <div class="star-rating col-md-7 a" data-score= <%= @avg_review %> ></div>
-                 <em><%= "#{@reviews.length} reviews" %></em>
-                </td>
-              </tr>
               <tr>
                 <td><strong>店名:</strong></td>
                 <td><%= @store.name %></td>
@@ -45,7 +43,7 @@
       <div class="col-md-4 col-md-offset-1">
        <h1 class="review_title">評價 <%= @store.name %></h1>
        sdsds<br>
-       <%= @a%>
+       <%= @store.avg_rating%>
        sdsdsd
         <% if @reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first!</h3>
@@ -55,7 +53,7 @@
             <div class="reviews">
               
               <p><%= review.rating %></p>
-              <div class="star-rating" data-score= <%= review.rating %> ></div>
+              <div class="star-rating text-left" data-score= <%= review.rating %> ></div>
 
               <p>評價：<%= review.comment %></p>
               <p>建立時間：<%= review.created_at %></p>

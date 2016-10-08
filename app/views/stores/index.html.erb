@@ -12,6 +12,23 @@
       <div class="thumbnail">
         <%= link_to (image_tag store.img.url(:medium), class: 'image'), store %>
       </div>
+      <% if store.avg_rating==0 %>
+        <h3>No reviews just yet</h3>
+      <% else  %>
+          <div class="star-rating " data-score= <%= store.avg_rating %> ></div>
+      <% end %>
     </div>
   <% end %>
 </div>
+
+
+<script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      half  : true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>

@@ -99,7 +99,8 @@
 					methods.bindAction.call(self);
 				}
 
-				$this.css('width', width*3);
+				/*$this.css('width', width*3); 
+				$this.css('text-align', 'left');*/
 			});
 		}, between: function(value, min, max) {
 			return Math.min(Math.max(parseFloat(value), min), max);
