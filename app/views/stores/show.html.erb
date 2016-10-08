@@ -1,10 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="img">
           <%= image_tag @store.img.url(:medium) %>
         </div>
+
         <div class="table-responsive">
           <table class="table">
             <tbody>
@@ -33,16 +34,21 @@
           
         </div><!--table-responsive-->
       </div><!--col-md-8-->
-      <div class="col-md-3 col-md-offset-1">
+      <div class="col-md-4 col-md-offset-1">
        <h1 class="review_title">評價 <%= @store.name %></h1>
+       sdsds<br>
+       <%= @a%>
+       sdsdsd
         <% if @reviews.blank? %>
           <h3>No reviews just yet, would you like to add the first!</h3>
           
         <% else %>
           <% @reviews.each do |review| %>
             <div class="reviews">
-              <div class="star-rating" data-score= <%= review.rating %> ></div>
+              
               <p><%= review.rating %></p>
+              <div class="star-rating" data-score= <%= review.rating %> ></div>
+
               <p><%= review.comment %></p>
               <p>><%= review.created_at %></p>
             </div>
@@ -60,6 +66,7 @@
     $('.star-rating').raty({
       path: '/assets/',
       readOnly: true,
+      half  : true,
       score: function() {
             return $(this).attr('data-score');
     }

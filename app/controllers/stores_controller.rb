@@ -11,6 +11,7 @@ class StoresController < ApplicationController
   # GET /stores/1.json
   def show
     @reviews = Review.where(store_id: @store.id).order("created_at DESC")
+    @a = @reviews.map { |e|  e.rating  } 
   end
 
   # GET /stores/new
