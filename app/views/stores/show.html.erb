@@ -6,9 +6,17 @@
           <%= image_tag @store.img.url(:medium) %>
         </div>
 
+
+
         <div class="table-responsive">
           <table class="table">
             <tbody>
+              <tr>
+                <td>       
+                 <div class="star-rating col-md-7 a" data-score= <%= @avg_review %> ></div>
+                 <em><%= "#{@reviews.length} reviews" %></em>
+                </td>
+              </tr>
               <tr>
                 <td><strong>店名:</strong></td>
                 <td><%= @store.name %></td>
@@ -49,8 +57,8 @@
               <p><%= review.rating %></p>
               <div class="star-rating" data-score= <%= review.rating %> ></div>
 
-              <p><%= review.comment %></p>
-              <p>><%= review.created_at %></p>
+              <p>評價：<%= review.comment %></p>
+              <p>建立時間：<%= review.created_at %></p>
             </div>
           <% end %>
         <% end %><br>
