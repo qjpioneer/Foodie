@@ -6,7 +6,8 @@
           <%= image_tag @store.img.url(:medium) %>
         </div>
         <div class="avg_rate text-center">
-            <div class="star-rating " data-score= <%= @avg_review %> ></div>
+            <p>綜合留言評價 <%= @store.avg_rating%></p>
+            <div class="star-rating " data-score= <%= @avg_review %> > </div>
             <em><%= "#{@reviews.length} reviews" %></em>
         </div>
 
@@ -32,8 +33,8 @@
                 <td><%= @store.category %></td>
               </tr>
               <tr>
-                <td><strong>Rating:</strong></td>
-                <td><%= @store.rate %></td>
+                <td><strong>編輯者評價:</strong></td>
+                <td><div class="star-rating1 " data-score= <%= @store.rate %> ></div></td>
               </tr>
             </tbody>
           </table>
@@ -52,10 +53,10 @@
           <% @reviews.each do |review| %>
             <div class="reviews">
               
-              <p><%= review.rating %></p>
+              <p>評論者：<%= User.find_by_id(review.user_id).email %></p>
               <div class="star-rating text-left" data-score= <%= review.rating %> ></div>
 
-              <p>評價：<%= review.comment %></p>
+              <p>我覺得：<%= review.comment %></p>
               <p>建立時間：<%= review.created_at %></p>
             </div>
           <% end %>
@@ -73,8 +74,23 @@
       path: '/assets/',
       readOnly: true,
       half  : true,
+      starHalf    : 'star-half-16.png',
+      starOn :'star-on-16.png' ,
+      starOff : 'star-off-16.png',
+
       score: function() {
             return $(this).attr('data-score');
     }
   });
+
+    $('.star-rating1').raty({
+      path: '/assets/',
+      readOnly: true,
+      half  : true,
+      size:16,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+
 </script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008221255) do
+ActiveRecord::Schema.define(version: 20161008225345) do
 
   create_table "reviews", force: :cascade do |t|
     t.float    "rating"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20161008221255) do
   create_table "stores", force: :cascade do |t|
     t.string   "name"
     t.string   "phone"
-    t.integer  "rate"
+    t.float    "rate"
     t.string   "address"
     t.string   "category"
     t.datetime "created_at",       null: false
