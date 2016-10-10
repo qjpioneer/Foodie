@@ -20,4 +20,6 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-/public/system/stores/imgs/
+/public/system/stores/imgs/public/uploads
+tmp
+logs
