@@ -2,8 +2,9 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-7">
-        <div class="img">
-          <%= image_tag @store.img.url(:medium) %>
+
+        <div class="img ">
+          <%= image_tag @store.img.url(:medium) ,class:'img-rounded img-responsive' %>
         </div>
         <div class="avg_rate text-center">
             <p>綜合留言評價 <%= @store.avg_rating%></p>

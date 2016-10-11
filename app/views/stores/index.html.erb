@@ -8,15 +8,21 @@
 
 <div class="row">
   <% @stores.each do |store| %>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <%= link_to (image_tag store.img.url(:medium), class: 'image'), store %>
-      </div>
-      <% if store.avg_rating==0 %>
-        <h3>No reviews just yet</h3>
-      <% else  %>
-          <div class="star-rating " data-score= <%= store.avg_rating %> ></div>
-      <% end %>
+    <div class="col-sm-6 col-md-4 col-lg-3 " id="index-store" >
+      <div class="store">
+          <div class="thumbnail">
+            <%= link_to (image_tag store.img.url(:medium), class: 'image'), store %>
+          </div>
+          <div class="caption">
+            <% if store.avg_rating==0 %>
+              <h4>No reviews just yet</h4>
+            <% else  %>
+                <div class="star-rating " data-score= <%= store.avg_rating %> ></div>
+            <% end %>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem velit vero nobis nostrum sit ipsa impedit provident corporis debitis nam.</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div><!-- class="caption"-->
+      </div> 
     </div>
   <% end %>
 </div>

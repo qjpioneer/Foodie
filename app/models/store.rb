@@ -3,6 +3,8 @@ class Store < ApplicationRecord
 	has_many :reviews
 
 	#paperclip
-	has_attached_file :img, styles: { medium: "400x600#"}, default_url: "/images/missing.jpg"
+	has_attached_file :img, styles: { medium: "600x400#"}, default_url: ":style/F600.jpg"
+	#has_attached_file :img, styles: { medium: "600x400#"}, default_url: ":style/logo.png"
+	
 	validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
 end
