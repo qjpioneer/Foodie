@@ -1,4 +1,4 @@
-<%= form_for([@store, review]) do |f| %>
+<%= form_for([@store, review], html: {class: "form-review img"}) do |f| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -16,12 +16,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :comment %>
+    <%= f.label :comment %><br>
     <%= f.text_area :comment %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class=" actions">
+    <%= f.submit '送出', :class => 'btn btn-primary'%>
   </div>
 <% end %>
 
