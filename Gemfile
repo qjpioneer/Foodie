@@ -54,7 +54,7 @@ end
 
 
   gem 'bootstrap-sass', '~> 3.3.6'
-  #gem 'ratyrate'
+  gem 'searchkick' #搜尋gem
 
 #####################################################
 

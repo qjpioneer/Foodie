@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :stores do
+  	collection do
+  		get 'search'
+  	end
   	resources :reviews, except: [:show, :index]
   	#route 在store/review
   end

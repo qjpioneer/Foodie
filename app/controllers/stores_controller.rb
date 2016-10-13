@@ -3,6 +3,19 @@ class StoresController < ApplicationController
   before_action :authenticate_user! ,except: [:index, :show]
   # GET /stores
   # GET /stores.json
+  
+  def search
+    if params[:search].present?
+      @stores = Store.search(params[:search])
+    else
+      @stores = Store.all
+    end
+  end
+
+
+
+
+
   def index
     @stores = Store.all
   end
@@ -30,6 +43,7 @@ class StoresController < ApplicationController
 
   # GET /stores/1/edit
   def edit
+    
   end
 
   # POST /stores

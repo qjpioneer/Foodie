@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+jQuery Raty - A Star Rating Plugin   https://github.com/wbotelhos/raty
+
+Devise
+
+Paperclip
+

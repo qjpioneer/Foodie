@@ -1,4 +1,6 @@
 class Store < ApplicationRecord
+	searchkick settings: {index: {max_result_window: 100000}}
+
 	belongs_to :user
 	has_many :reviews
 
