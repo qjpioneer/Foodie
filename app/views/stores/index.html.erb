@@ -6,36 +6,79 @@
   </div>
 <% end %>
 
-<div class="row">
-  <% @stores.each do |store| %>
-    <div class="col-sm-6 col-md-4 col-lg-3 " id="index-store" >
-      <div class="store">
-          <div class="thumbnail">
-            <%= link_to (image_tag store.img.url(:medium), class: 'image'), store %>
-          </div>
-          <div class="caption">
-            <h3><%= store.name %></h3>
-            <% if store.avg_rating==0 %>
-              <h4>No reviews just yet</h4>
-            <% else  %>
-                <div class="star-rating " data-score= <%= store.avg_rating %> ></div>
-            <% end %>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem velit vero nobis nostrum sit ipsa impedit provident corporis debitis nam.</p>
-            <p>
-              <%= link_to "more...", store , class: 'btn btn-primary'%>
-            </p>
-          </div><!-- class="caption"-->
-      </div> 
-    </div>
-  <% end %>
+
+
+<!-- Button trigger modal 
+data-target="#myModal" in button must have same id="myModal" in Modal
+
+
+-->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  新增
+</button>
+
+
+
+<div class="row" id="stores-index">
+  <%= render @stores %>
 </div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'ajaxform', store: @store %>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--                           script                          -->
+
+
+
+<script>
+    $('.star-show').raty({
+      path: '/assets/',
+      readOnly: true,
+      half  : true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+</script>
 
 
 <script>
     $('.star-rating').raty({
       path: '/assets/',
-      readOnly: true,
       half  : true,
+      size      : 32,
+      scoreName: 'store[rate]',
       score: function() {
             return $(this).attr('data-score');
     }

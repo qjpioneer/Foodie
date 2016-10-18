@@ -9,4 +9,6 @@ class Store < ApplicationRecord
 	#has_attached_file :img, styles: { medium: "600x400#"}, default_url: ":style/logo.png"
 	
 	validates_attachment_content_type :img, content_type: /\Aimage\/.*\z/
+
+	
 end

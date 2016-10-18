@@ -41,13 +41,22 @@
             </tbody>
           </table>
           <em>edit by  <%= User.find_by_id(@store.user_id).email%> .</em><br>
+
           <% if user_signed_in?%>
+
+
+
+
             <% if current_user==User.find_by_id(@store.user_id) %>
-              <%= link_to '編輯', edit_store_path(@store) %> |
+              <%= link_to '編輯', edit_store_path(@store), class: 'btn btn-info' %> 
+              <%= link_to '刪除', @store,method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %> 
             <% end %>
           <% end %>
 
-          <%= link_to '返回', stores_path %>
+
+
+
+          <%= link_to '返回', stores_path , class: 'btn btn-default'%>
 
 
         </div><!--table-responsive-->

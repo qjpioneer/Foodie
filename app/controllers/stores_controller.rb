@@ -4,6 +4,8 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   
+
+  
   def search
     if params[:search].present?
       @stores = Store.search(params[:search])
@@ -18,6 +20,11 @@ class StoresController < ApplicationController
 
   def index
     @stores = Store.all
+    if user_signed_in?
+      @store = current_user.stores.build
+    else
+      @store=Store.new
+    end
   end
 
   # GET /stores/1
@@ -54,11 +61,15 @@ class StoresController < ApplicationController
 
     respond_to do |format|
       if @store.save
-        format.html { redirect_to @store, notice: 'Store was successfully created.' }
+        format.html { redirect_to stores_path, notice: 'Store was successfully created.' }
         format.json { render :show, status: :created, location: @store }
+        #for ajax
+        format.js
       else
         format.html { render :new }
         format.json { render json: @store.errors, status: :unprocessable_entity }
+        #for ajax
+        format.js
       end
     end
   end

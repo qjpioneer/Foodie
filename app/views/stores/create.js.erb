@@ -1,0 +1,8 @@
+$("#myModal").modal('hide');
+
+
+$("#stores-index").prepend('<%= j render @store %>');
+$(".post").val('');
+
+
+$("#store-<%=@store.id%>").hide().fadeIn(1000);
